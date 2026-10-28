@@ -61,13 +61,14 @@ export function MeaningSection({ contactInfo }) {
             <strong className="text-white uppercase tracking-widest font-bold not-italic block mt-2 mb-6">Vista o propósito.</strong>
           </p>
 
-          {/* Botão Pulsando no final da História direcionando para o Instagram */}
-          <div className="flex justify-center pt-2">
+        {/* Botão Pulsando no final da História direcionando para o Instagram */}
+          <div className="flex justify-center pt-6">
             <a
               href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="animate-pulse inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white font-extrabold py-4 px-8 rounded-2xl uppercase tracking-wider text-xs shadow-[0_0_25px_rgba(219,39,119,0.4)] hover:shadow-[0_0_35px_rgba(219,39,119,0.6)] hover:scale-105 active:scale-95 transition-all duration-300"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white font-extrabold py-4 px-8 rounded-2xl uppercase tracking-wider text-xs shadow-[0_0_25px_rgba(219,39,119,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse"
+              style={{ animationDuration: '2s' }}
             >
               <Instagram size={18} />
               CONHEÇA A AGNUS CLUB NO INSTAGRAM

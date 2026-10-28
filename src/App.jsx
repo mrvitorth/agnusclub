@@ -36,7 +36,7 @@ export default function App() {
           <Hero contactInfo={storeData.contact} />
           
           <ScrollReveal>
-            <MeaningSection />
+            <MeaningSection contactInfo={storeData.contact} />
           </ScrollReveal>
 
           <ScrollReveal>
