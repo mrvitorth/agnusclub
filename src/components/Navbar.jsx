@@ -12,7 +12,7 @@ export function Navbar({ onOpenAdmin, contactInfo }) {
         {/* Logotipo e Nome */}
         <div className="flex items-center gap-3 group cursor-pointer">
           <img 
-            src="./public/logo.png" 
+            src="/logo.png" 
             alt="Agnus Club Logo" 
             className="w-10 h-10 object-contain rounded-xl border border-neutral-700/80 group-hover:border-white/40 transition-all duration-300 group-hover:scale-105" 
           />
