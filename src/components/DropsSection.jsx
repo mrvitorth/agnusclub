@@ -6,7 +6,7 @@ export function DropsSection({ products }) {
     <section id="produtos" className="py-24 px-4 max-w-6xl mx-auto relative bg-grid-pattern">
       <div className="text-center mb-16">
         <span className="text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 mb-2 block">
-          SEÇÃO 03 — O PRODUTO
+          - PRODUTOS -
         </span>
         <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-400">
           O PRIMEIRO DROP.
