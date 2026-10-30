@@ -10,7 +10,7 @@ import { InstagramCTA } from './components/InstagramCTA';
 import { Footer } from './components/Footer';
 import { AdminModal } from './components/AdminModal';
 import { ScrollReveal } from './components/ScrollReveal';
-import { WhatsAppFloat } from './components/WhatsAppFloat'; // <-- Importar o botão flutuante
+import { WhatsAppFloat } from './components/WhatsAppFloat';
 
 export default function App() {
   const [storeData, setStoreData] = useState(() => {
@@ -59,7 +59,6 @@ export default function App() {
 
       <Footer contactInfo={storeData.contact} />
 
-      {/* Botão Flutuante do WhatsApp sempre visível */}
       <WhatsAppFloat contactInfo={storeData.contact} />
 
       <AdminModal

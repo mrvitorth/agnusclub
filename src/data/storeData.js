@@ -11,6 +11,7 @@ export const initialStoreData = {
       color: "Off-White / Creme",
       description: '"Espera no Senhor, sê corajoso, e ele fortalecerá o teu coração; espera, pois, no Senhor."',
       tag: "1º DROP - DISPONÍVEL",
+      originalPrice: "89,99", //Preço padrão riscado
       price: "79,99", // <-- Preço
       frontImage: "/camisa-salmos-offwhite-frente.jpeg", // Foto da frente (com o cordeiro pequeno)
       backImage: "/camisa-salmos-offwhite-verso.jpeg",   // Foto do verso (com o Salmos grande)
@@ -23,6 +24,7 @@ export const initialStoreData = {
       color: "Black Washed / Preto",
       description: "Modelagem streetwear premium com estampa marcante e detalhes em azul royal.",
       tag: "1º DROP - DISPONÍVEL",
+      originalPrice: "89,99", //Preço padrão riscado
       price: "79,99", // <-- Preço
       frontImage: "/camisa-jesus-offwhite-frente.jpg", // Foto da frente (ou a que você definiu para a preta)
       backImage: "/camisa-jesus-offwhite-verso.jpeg", // Foto do verso (com o Jesus Is King)
