@@ -54,7 +54,7 @@ export function AdminModal({ isOpen, onClose, storeData, onSaveData }) {
       description: newDesc,
       tag: "NOVO DROP",
       imageUrl: newImg,
-      buyLink: `https://wa.me/${5511958955673}?text=Olá,%20tenho%20interesse%20no%20produto%20${encodeURIComponent(newTitle)}!`
+      buyLink: `https://wa.me/${+5511988431330}?text=Olá,%20tenho%20interesse%20no%20produto%20${encodeURIComponent(newTitle)}!`
     };
 
     const updated = {

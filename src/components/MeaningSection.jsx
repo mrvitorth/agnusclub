@@ -1,8 +1,7 @@
 import React from 'react';
-import { Quote, Instagram } from 'lucide-react';
+import { Quote } from 'lucide-react'; // Removemos o Instagram daqui
 
 export function MeaningSection({ contactInfo }) {
-  // Pega o link do Instagram da storeData ou usa o padrão
   const instagramUrl = contactInfo?.instagramUrl || "https://instagram.com";
 
   return (
@@ -61,8 +60,8 @@ export function MeaningSection({ contactInfo }) {
             <strong className="text-white uppercase tracking-widest font-bold not-italic block mt-2 mb-6">Vista o propósito.</strong>
           </p>
 
-        {/* Botão Pulsando no final da História direcionando para o Instagram */}
-          <div className="flex justify-center pt-6">
+          {/* Botão Pulsando no final da História com SVG do Instagram */}
+          <div className="flex justify-center pt-2">
             <a
               href={instagramUrl}
               target="_blank"
@@ -70,7 +69,21 @@ export function MeaningSection({ contactInfo }) {
               className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white font-extrabold py-4 px-8 rounded-2xl uppercase tracking-wider text-xs shadow-[0_0_25px_rgba(219,39,119,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 animate-pulse"
               style={{ animationDuration: '2s' }}
             >
-              <Instagram size={18} />
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="18" 
+                height="18" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
               CONHEÇA A AGNUS CLUB NO INSTAGRAM
             </a>
           </div>

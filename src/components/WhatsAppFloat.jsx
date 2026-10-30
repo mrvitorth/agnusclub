@@ -4,7 +4,7 @@ import { MessageCircle } from 'lucide-react';
 export function WhatsAppFloat({ contactInfo }) {
   // Cria a mensagem automática padrão para o WhatsApp
   const defaultMessage = encodeURIComponent("Olá! Vim pela landing page da Agnus Club e tenho interesse no Drop.");
-  const whatsappUrl = `https://wa.me/${+5511958955673}?text=${defaultMessage}`;
+  const whatsappUrl = `https://wa.me/${+5511988431330}?text=${defaultMessage}`;
 
   return (
     <a

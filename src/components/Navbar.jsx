@@ -4,7 +4,7 @@ import { Lock, MessageCircle } from 'lucide-react';
 export function Navbar({ onOpenAdmin, contactInfo }) {
   // Mensagem padrão para o WhatsApp
   const defaultMessage = encodeURIComponent("Olá! Vim pela landing page da Agnus Club e quero garantir o meu Drop.");
-  const whatsappUrl = `https://wa.me/${+5511958955673}?text=${defaultMessage}`;
+  const whatsappUrl = `https://wa.me/${+5511988431330}?text=${defaultMessage}`;
 
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl bg-[#181818]/80 backdrop-blur-xl z-40 border border-neutral-800/80 rounded-2xl shadow-2xl transition-all duration-300">
