@@ -10,6 +10,15 @@ export function AdminPage() {
   const [products, setProducts] = useState([]);
   const [isSaving, setIsSaving] = useState(false);
 
+  // Estados de Configurações Gerais da Loja
+  const [settings, setSettings] = useState({
+    launch_date: '01/11',
+    launch_banner: '1º DROP DISPONÍVEL',
+    whatsapp: '5511988431330',
+    instagram: '@agnusclub'
+  });
+  const [savingSettings, setSavingSettings] = useState(false);
+
   // Formulário
   const [title, setTitle] = useState('');
   const [color, setColor] = useState('');
@@ -32,8 +41,21 @@ export function AdminPage() {
     }
   };
 
+  const fetchSettings = async () => {
+    const res = await fetch('/api/settings');
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.id) {
+        setSettings(data);
+      }
+    }
+  };
+
   useEffect(() => {
-    if (isAuthenticated) fetchProducts();
+    if (isAuthenticated) {
+      fetchProducts();
+      fetchSettings();
+    }
   }, [isAuthenticated]);
 
   const handleLogin = async (e) => {
@@ -62,6 +84,27 @@ export function AdminPage() {
     sessionStorage.removeItem('agnus_admin_token');
     setIsAuthenticated(false);
     setPassword('');
+  };
+
+  const handleSaveSettings = async (e) => {
+    e.preventDefault();
+    setSavingSettings(true);
+    try {
+      const res = await fetch('/api/settings', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${password}`
+        },
+        body: JSON.stringify(settings)
+      });
+      if (!res.ok) throw new Error('Erro ao salvar configurações');
+      alert('Configurações da loja atualizadas com sucesso!');
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setSavingSettings(false);
+    }
   };
 
   const uploadToVercelBlob = async (file) => {
@@ -220,6 +263,75 @@ export function AdminPage() {
             </button>
           </div>
         </div>
+
+        {/* Configurações Gerais da Loja (WhatsApp, Data de Lançamento, Avisos) */}
+        <form onSubmit={handleSaveSettings} className="bg-neutral-900 border border-white/10 p-6 md:p-8 rounded-3xl space-y-5">
+          <h2 className="text-sm font-black uppercase tracking-wider text-blue-400">
+            Configurações Gerais & Contato
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="text-[11px] text-neutral-400 font-bold uppercase tracking-wider block mb-1">
+                Data do Lançamento / Próximo Drop
+              </label>
+              <input
+                type="text"
+                placeholder="Ex: 15/12 às 20h"
+                value={settings.launch_date}
+                onChange={(e) => setSettings({ ...settings, launch_date: e.target.value })}
+                className="w-full bg-neutral-950 border border-white/10 rounded-xl p-3 text-xs text-white"
+              />
+            </div>
+
+            <div>
+              <label className="text-[11px] text-neutral-400 font-bold uppercase tracking-wider block mb-1">
+                Texto de Destaque / Banner
+              </label>
+              <input
+                type="text"
+                placeholder="Ex: 2º DROP - PRÉ-VENDA LIBERADA"
+                value={settings.launch_banner}
+                onChange={(e) => setSettings({ ...settings, launch_banner: e.target.value })}
+                className="w-full bg-neutral-950 border border-white/10 rounded-xl p-3 text-xs text-white"
+              />
+            </div>
+
+            <div>
+              <label className="text-[11px] text-neutral-400 font-bold uppercase tracking-wider block mb-1">
+                WhatsApp de Atendimento (com DDI 55 + DDD)
+              </label>
+              <input
+                type="text"
+                placeholder="Ex: 5511988431330"
+                value={settings.whatsapp}
+                onChange={(e) => setSettings({ ...settings, whatsapp: e.target.value })}
+                className="w-full bg-neutral-950 border border-white/10 rounded-xl p-3 text-xs text-white"
+              />
+            </div>
+
+            <div>
+              <label className="text-[11px] text-neutral-400 font-bold uppercase tracking-wider block mb-1">
+                Instagram da Marca
+              </label>
+              <input
+                type="text"
+                placeholder="Ex: @agnusclub"
+                value={settings.instagram}
+                onChange={(e) => setSettings({ ...settings, instagram: e.target.value })}
+                className="w-full bg-neutral-950 border border-white/10 rounded-xl p-3 text-xs text-white"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={savingSettings}
+            className="bg-blue-500 text-white font-extrabold px-6 py-3 rounded-xl text-xs uppercase tracking-wider hover:bg-blue-600 transition disabled:opacity-50"
+          >
+            {savingSettings ? 'Salvando...' : 'Atualizar Informações da Loja'}
+          </button>
+        </form>
 
         <form onSubmit={handleCreateProduct} className="bg-neutral-900 border border-white/10 p-6 md:p-8 rounded-3xl space-y-5">
           <h2 className="text-sm font-black uppercase tracking-wider flex items-center gap-2 text-emerald-400">

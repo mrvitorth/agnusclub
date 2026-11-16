@@ -20,7 +20,7 @@ export default function App() {
 
   const [storeData, setStoreData] = useState(initialStoreData);
 
-  // 2. Busca os produtos salvos no banco da Vercel ao carregar a loja
+  // 2. Busca os produtos e configurações salvos no banco da Vercel ao carregar a loja
   useEffect(() => {
     fetch('/api/products')
       .then((res) => res.json())
@@ -33,6 +33,25 @@ export default function App() {
         }
       })
       .catch((err) => console.error('Usando catálogo local:', err));
+
+    fetch('/api/settings')
+      .then((res) => res.json())
+      .then((cloudSettings) => {
+        if (cloudSettings && cloudSettings.id) {
+          setStoreData((prev) => ({
+            ...prev,
+            contact: {
+              ...prev.contact,
+              whatsapp: cloudSettings.whatsapp || prev.contact?.whatsapp,
+              phone: cloudSettings.whatsapp || prev.contact?.phone,
+              instagram: cloudSettings.instagram || prev.contact?.instagram,
+              launchDate: cloudSettings.launch_date || prev.contact?.launchDate,
+              launchBanner: cloudSettings.launch_banner || prev.contact?.launchBanner,
+            }
+          }));
+        }
+      })
+      .catch((err) => console.error('Usando configurações locais:', err));
   }, []);
 
   return (
